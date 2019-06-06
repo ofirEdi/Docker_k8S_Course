@@ -2,7 +2,7 @@ sudo: required
 services:
  - docker
 
-before_before_install:
+before_install:
   - docker build -t ofir/react_dev -f Dockerfile.dev .
 
 script:
