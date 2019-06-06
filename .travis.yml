@@ -3,7 +3,7 @@ services:
  - docker
 
 before_before_install:
-  - docker build -t ofiredi/docker-react -f Dockerfile.dev .
+  - docker build -t ofir/react_dev -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true ofiredi/docker-react npm run test -- --coverage
+  - docker run -e CI=true ofir/react_dev npm run test -- --coverage

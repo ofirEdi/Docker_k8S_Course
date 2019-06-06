@@ -4,10 +4,10 @@ FROM node:10.16.0-alpine as builder
 #copy files
 
 WORKDIR /app
-COPY ./package.json .
+COPY ./ReactFirstExcercise/frontend/package.json .
 #install dependencies
 RUN npm install
-COPY . .
+COPY ./ReactFirstExcercise/frontend/ .
 
 EXPOSE 3000
 
