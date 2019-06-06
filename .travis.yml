@@ -3,7 +3,20 @@ services:
  - docker
 
 before_install:
-  - docker build -t ofir/react_dev -f Dockerfile.dev .
+  - docker build -t ofir/react_prod  .
 
 script:
-  - docker run -e CI=true ofir/react_dev npm run test -- --coverage
+  - docker run -e CI=true ofir/react_prod npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react_prod"
+  env: "ReactProd-env"
+  bucket_name: "elasticbeanstalk-us-east-2-369106132999"
+  bucket_path: "react_prod"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
