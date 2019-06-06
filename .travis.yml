@@ -3,10 +3,10 @@ services:
  - docker
 
 before_install:
-  - docker build -t ofir/react_prod  .
+  - docker build -t ofir/react_dev -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true ofir/react_prod npm run test -- --coverage
+  - docker run -e CI=true ofir/react_dev npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
