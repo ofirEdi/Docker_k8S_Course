@@ -1,0 +1,9 @@
+sudo: required
+services:
+ - docker
+
+before_before_install:
+  - docker build -t ofirEdi/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run ofirEdi/docker-react npm run test -- --coverage
